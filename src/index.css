@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* THEME: AACHARYA (Astrology)
+   COLORS: Saffron (Orange), Gold, White
+   VIBE: Spiritual, Energetic, Professional
+*/
+
+@layer base {
+  :root {
+    /* --- LIGHT MODE (Clean White & Orange) --- */
+    --background: 0 0% 100%; /* Pure White */
+    --foreground: 20 14% 4%; /* Soft Black */
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 4%;
+
+    /* PRIMARY: Vibrant Saffron Orange */
+    --primary: 25 95% 53%; 
+    --primary-foreground: 60 9% 98%; /* White text on orange button */
+
+    --secondary: 30 100% 96%; /* Very light orange background for badges */
+    --secondary-foreground: 24 9.8% 10%;
+
+    --muted: 30 20% 96%;
+    --muted-foreground: 25 5% 45%;
+
+    --accent: 35 100% 50%; /* Golden Orange for highlights */
+    --accent-foreground: 24 9.8% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 60 9.1% 97.8%;
+
+    --border: 30 20% 90%; /* Warm grey-orange border */
+    --input: 30 20% 90%;
+    --ring: 25 95% 53%; /* Focus ring color */
+
+    --radius: 0.75rem;
+
+    /* --- CUSTOM ASTROLOGY VARIABLES --- */
+    --astro-orange: 25 95% 53%;
+    --astro-gold: 45 100% 50%;
+    
+    /* Blurry Background Gradients (Light) */
+    --gradient-hero: linear-gradient(135deg, hsl(25 95% 53%), hsl(45 100% 50%));
+    --gradient-subtle: radial-gradient(circle at center, hsl(30 100% 97%) 0%, transparent 70%);
+    
+    --shadow-glow: 0 0 20px hsl(25 95% 53% / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(25 95% 53% / 0.15);
+  }
+
+  .dark {
+    /* --- DARK MODE (Deep Mystical Atmosphere) --- */
+    --background: 20 15% 8%; /* Very Dark Warm Brown/Black */
+    --foreground: 60 9.1% 97.8%;
+
+    --card: 20 15% 10%;
+    --card-foreground: 60 9.1% 97.8%;
+
+    --popover: 20 15% 10%;
+    --popover-foreground: 60 9.1% 97.8%;
+
+    /* PRIMARY: Glowing Deep Orange */
+    --primary: 25 90% 55%; 
+    --primary-foreground: 60 9.1% 97.8%;
+
+    --secondary: 20 15% 15%;
+    --secondary-foreground: 60 9.1% 97.8%;
+
+    --muted: 20 15% 15%;
+    --muted-foreground: 25 5% 65%;
+
+    --accent: 35 100% 50%;
+    --accent-foreground: 60 9.1% 97.8%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+
+    --border: 20 15% 18%;
+    --input: 20 15% 18%;
+    --ring: 25 90% 55%;
+
+    /* Blurry Background Gradients (Dark) */
+    --gradient-hero: linear-gradient(135deg, hsl(25 90% 45%), hsl(45 100% 40%));
+    --gradient-subtle: radial-gradient(circle at top, hsl(25 90% 55% / 0.15), transparent 70%);
+
+    --shadow-glow: 0 0 30px hsl(25 90% 55% / 0.5); /* Stronger glow in dark mode */
+    --shadow-card: 0 10px 40px -10px hsl(0 0% 0% / 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    /* Adding a subtle background texture globally */
+    background-image: var(--gradient-subtle);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+}
+
+@layer components {
+  /* Cards with subtle orange glow border */
+  .cosmic-card, .card {
+    @apply bg-card/90 backdrop-blur-md border border-border/60 rounded-xl transition-all duration-300;
+  }
+  
+  .cosmic-card:hover, .card:hover {
+    box-shadow: var(--shadow-card);
+    border-color: hsl(var(--primary) / 0.5);
+  }
+
+  /* Text Gradients (Orange to Gold) */
+  .gradient-text {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Buttons - Glowing Effect */
+  .btn-glow {
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.4);
+  }
+  .btn-glow:hover {
+    box-shadow: 0 0 25px hsl(var(--primary) / 0.6);
+  }
+}
+
+@layer utilities {
+  /* Floating Animation for "Spiritual" feel */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Orange Mist Background Blob */
+  .bg-orange-mist {
+    background: radial-gradient(circle, hsl(25 95% 53% / 0.15) 0%, transparent 70%);
+    filter: blur(40px);
+  }
+}
